@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baobá Recife | Cozinha Africana no Bairro do Recife</title>
+<meta name="description" content="Restaurante de comida africana com entrega no Bairro do Recife (Recife Antigo). Moambe, jollof, injera, suya e muito mais.">
+
+<style>
+  :root {
+    --terra: #b5451b;
+    --terra-escuro: #7a2b0e;
+    --ocre: #e0a526;
+    --verde: #2f5d3a;
+    --creme: #fbf3e4;
+    --carvao: #2a1d15;
+    --branco: #ffffff;
+    --raio: 14px;
+    --sombra: 0 8px 24px rgba(42, 29, 21, .12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Trebuchet MS", "Segoe UI", Roboto, sans-serif;
+    color: var(--carvao);
+    background: var(--creme);
+    line-height: 1.65;
+  }
+
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; line-height: 1.2; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .container { width: min(1100px, 92%); margin-inline: auto; }
+
+  /* faixa decorativa inspirada em padrões africanos */
+  .faixa {
+    height: 14px;
+    background:
+      repeating-linear-gradient(45deg, var(--ocre) 0 12px, var(--terra) 12px 24px, var(--verde) 24px 36px, var(--carvao) 36px 48px);
+  }
+
+  /* ---------- Cabeçalho ---------- */
+  header {
+    background: var(--carvao);
+    color: var(--creme);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 24px;
+    padding: 14px 0;
+  }
+  .logo {
+    font-family: Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: .5px;
+  }
+  .logo span { color: var(--ocre); }
+  nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 22px; }
+  nav a { font-size: .95rem; opacity: .9; padding: 4px 0; border-bottom: 2px solid transparent; }
+  nav a:hover { opacity: 1; border-color: var(--ocre); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background:
+      linear-gradient(135deg, rgba(122,43,14,.94), rgba(42,29,21,.94)),
+      repeating-linear-gradient(60deg, #000 0 2px, transparent 2px 22px);
+    color: var(--creme);
+    padding: 90px 0 100px;
+    text-align: center;
+  }
+  .hero .selo {
+    display: inline-block;
+    border: 1px solid var(--ocre);
+    color: var(--ocre);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: .85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin-bottom: 18px; }
+  .hero h1 em { color: var(--ocre); font-style: normal; }
+  .hero p { max-width: 640px; margin: 0 auto 34px; font-size: 1.1rem; opacity: .93; }
+
+  .botoes { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: bold;
+    transition: transform .2s, box-shadow .2s, background .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
+  .btn-primario { background: var(--ocre); color: var(--carvao); }
+  .btn-primario:hover { background: #f0b937; }
+  .btn-contorno { border: 2px solid var(--creme); color: var(--creme); }
+  .btn-contorno:hover { background: var(--creme); color: var(--carvao); }
+
+  /* ---------- Seções ---------- */
+  section { padding: 76px 0; }
+  .titulo { text-align: center; margin-bottom: 44px; }
+  .titulo small {
+    display: block;
+    color: var(--terra);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: .8rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .titulo h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+  .titulo p { max-width: 600px; margin: 12px auto 0; opacity: .8; }
+
+  /* Sobre */
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .sobre-grid p + p { margin-top: 14px; }
+  .destaques { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .destaque {
+    background: var(--branco);
+    border-radius: var(--raio);
+    padding: 22px 18px;
+    box-shadow: var(--sombra);
+    border-top: 5px solid var(--terra);
+  }
+  .destaque:nth-child(2) { border-color: var(--verde); }
+  .destaque:nth-child(3) { border-color: var(--ocre); }
+  .destaque:nth-child(4) { border-color: var(--carvao); }
+  .destaque strong { display: block; font-family: Georgia, serif; font-size: 1.15rem; margin-bottom: 4px; }
+  .destaque span { font-size: .92rem; opacity: .8; }
+
+  /* Cardápio */
+  #cardapio { background: var(--branco); }
+  .categoria { margin-bottom: 46px; }
+  .categoria h3 {
+    font-size: 1.5rem;
+    color: var(--terra-escuro);
+    border-bottom: 3px double var(--ocre);
+    padding-bottom: 8px;
+    margin-bottom: 22px;
+  }
+  .pratos { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+  .prato {
+    background: var(--creme);
+    border-radius: var(--raio);
+    padding: 20px 22px;
+    border-left: 6px solid var(--terra);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .prato:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+  .prato-topo { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .prato h4 { font-family: Georgia, serif; font-size: 1.15rem; }
+  .preco { font-weight: bold; color: var(--terra); white-space: nowrap; }
+  .origem {
+    display: inline-block;
+    font-size: .75rem;
+    background: var(--verde);
+    color: var(--creme);
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin: 6px 0 8px;
+  }
+  .prato p { font-size: .95rem; opacity: .85; }
+  .nota { text-align: center; font-size: .9rem; opacity: .7; margin-top: 10px; }
+
+  /* Entrega */
+  #entrega {
+    background: var(--verde);
+    color: var(--creme);
+  }
+  #entrega .titulo small { color: var(--ocre); }
+  .entrega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+  .caixa {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: var(--raio);
+    padding: 28px;
+  }
+  .caixa h3 { color: var(--ocre); margin-bottom: 14px; font-size: 1.3rem; }
+  .caixa ul { list-style: none; }
+  .caixa li { padding: 8px 0 8px 26px; position: relative; border-bottom: 1px dashed rgba(255,255,255,.2); }
+  .caixa li:last-child { border-bottom: 0; }
+  .caixa li::before { content: "◆"; position: absolute; left: 0; color: var(--ocre); font-size: .8rem; top: 11px; }
+  .passos { counter-reset: passo; }
+  .passos li { padding-left: 42px; }
+  .passos li::before {
+    counter-increment: passo;
+    content: counter(passo);
+    background: var(--ocre);
+    color: var(--carvao);
+    font-weight: bold;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    top: 8px;
+    font-size: .85rem;
+  }
+
+  /* Contato */
+  .contato-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .cartao {
+    background: var(--branco);
+    border-radius: var(--raio);
+    padding: 26px;
+    text-align: center;
+    box-shadow: var(--sombra);
+  }
+  .cartao h3 { color: var(--terra); margin-bottom: 8px; font-size: 1.2rem; }
+  .cartao a { color: var(--verde); font-weight: bold; }
+  .cartao a:hover { text-decoration: underline; }
+
+  footer { background: var(--carvao); color: var(--creme); text-align: center; padding: 34px 0; font-size: .9rem; }
+  footer p { opacity: .8; }
+  footer .logo { display: block; margin-bottom: 6px; opacity: 1; }
+
+  /* WhatsApp flutuante */
+  .whats {
+    position: fixed;
+    right: 18px; bottom: 18px;
+    background: #25d366;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: bold;
+    box-shadow: 0 6px 18px rgba(0,0,0,.3);
+    z-index: 20;
+  }
+  .whats:hover { background: #1ebd5a; }
+
+  /* ---------- Responsivo ---------- */
+  @media (max-width: 800px) {
+    .sobre-grid, .entrega-grid { grid-template-columns: 1fr; }
+    .nav { justify-content: center; text-align: center; }
+    nav ul { justify-content: center; }
+    section { padding: 56px 0; }
+    .hero { padding: 64px 0 72px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="faixa"></div>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">Baobá <span>Recife</span></a>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#entrega">Entrega</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <span class="selo">Cozinha africana no Bairro do Recife</span>
+      <h1>O sabor da <em>África</em> chega até você</h1>
+      <p>Pratos tradicionais de Angola, Nigéria, Senegal, Etiópia e Moçambique, preparados com temperos de verdade e entregues quentinhos em todo o Bairro do Recife.</p>
+      <div class="botoes">
+        <a class="btn btn-primario" href="https://wa.me/5581999999999?text=Olá!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">Fazer pedido</a>
+        <a class="btn btn-contorno" href="#cardapio">Ver cardápio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <div class="titulo">
+        <small>Nossa história</small>
+        <h2>Um pedaço da África no Recife Antigo</h2>
+      </div>
+      <div class="sobre-grid">
+        <div>
+          <p>O Recife tem uma ligação profunda com a África: nas ruas, na música, na fé e, claro, na mesa. O <strong>Baobá Recife</strong> nasceu para celebrar essa herança, trazendo para o Bairro do Recife receitas africanas feitas com cuidado, ingredientes selecionados e muito afeto.</p>
+          <p>Do dendê ao amendoim, da mandioca ao quiabo, cada prato conta uma história. Nossa cozinha respeita as tradições de cada país e dialoga com os sabores que já fazem parte da nossa cultura nordestina.</p>
+          <p>Trabalhamos <strong>exclusivamente com entrega e retirada</strong>, para que você aproveite a refeição onde estiver, sem sair do bairro.</p>
+        </div>
+        <div class="destaques">
+          <div class="destaque"><strong>Receitas autênticas</strong><span>Inspiradas em cozinhas de vários países africanos.</span></div>
+          <div class="destaque"><strong>Feito na hora</strong><span>Preparo diário, sem pressa e sem atalhos.</span></div>
+          <div class="destaque"><strong>Opções veganas</strong><span>Pratos à base de legumes, grãos e folhas.</span></div>
+          <div class="destaque"><strong>Entrega local</strong><span>Rápida e cuidadosa dentro do Bairro do Recife.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <section id="cardapio">
+    <div class="container">
+      <div class="titulo">
+        <small>Cardápio</small>
+        <h2>Pratos que viajam pelo continente</h2>
+        <p>Escolha seu favorito ou monte um combo para dividir.</p>
+      </div>
+
+      <div class="categoria">
+        <h3>Pratos principais</h3>
+        <div class="pratos">
+          <article class="prato">
+            <div class="prato-topo"><h4>Muamba de Galinha</h4><span class="preco">R$ 42,00</span></div>
+            <span class="origem">Angola</span>
+            <p>Frango cozido lentamente em molho de dendê, quiabo e alho, servido com funge e arroz.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Jollof Rice com Frango</h4><span class="preco">R$ 38,00</span></div>
+            <span class="origem">Nigéria / Gana</span>
+            <p>Arroz cozido em molho de tomate, pimentão e especiarias, acompanhado de frango grelhado.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Mafé</h4><span class="preco">R$ 40,00</span></div>
+            <span class="origem">Senegal / Mali</span>
+            <p>Ensopado cremoso de carne com pasta de amendoim e legumes, servido com arroz branco.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Doro Wat com Injera</h4><span class="preco">R$ 44,00</span></div>
+            <span class="origem">Etiópia</span>
+            <p>Frango em molho picante berbere com ovo cozido, servido sobre o tradicional pão injera.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Fufu com Sopa Egusi</h4><span class="preco">R$ 39,00</span></div>
+            <span class="origem">Nigéria</span>
+            <p>Massa macia de inhame e mandioca com sopa de sementes de melão, folhas verdes e peixe defumado.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Matapá Vegano</h4><span class="preco">R$ 35,00</span></div>
+            <span class="origem">Moçambique · Vegano</span>
+            <p>Folhas de mandioca cozidas com amendoim e leite de coco, servidas com arroz e farofa.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="categoria">
+        <h3>Petiscos e acompanhamentos</h3>
+        <div class="pratos">
+          <article class="prato">
+            <div class="prato-topo"><h4>Suya (espetinho)</h4><span class="preco">R$ 24,00</span></div>
+            <span class="origem">Nigéria</span>
+            <p>Espetinhos de carne temperados com amendoim torrado e pimenta, com cebola roxa e tomate.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Kelewele</h4><span class="preco">R$ 18,00</span></div>
+            <span class="origem">Gana · Vegano</span>
+            <p>Banana-da-terra frita com gengibre, pimenta e cravo. Crocante por fora, macia por dentro.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Acarajé Africano (Akara)</h4><span class="preco">R$ 16,00</span></div>
+            <span class="origem">África Ocidental · Vegano</span>
+            <p>Bolinhos de feijão-fradinho fritos, servidos com molho de pimenta da casa.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="categoria">
+        <h3>Sobremesas e bebidas</h3>
+        <div class="pratos">
+          <article class="prato">
+            <div class="prato-topo"><h4>Puff-puff</h4><span class="preco">R$ 14,00</span></div>
+            <span class="origem">África Ocidental</span>
+            <p>Bolinhos fritos fofinhos, polvilhados com açúcar e canela.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Chin Chin</h4><span class="preco">R$ 12,00</span></div>
+            <span class="origem">Nigéria</span>
+            <p>Biscoitinhos crocantes de massa frita levemente adocicada com noz-moscada.</p>
+          </article>
+          <article class="prato">
+            <div class="prato-topo"><h4>Suco de Hibisco (Bissap)</h4><span class="preco">R$ 10,00</span></div>
+            <span class="origem">Senegal · Vegano</span>
+            <p>Bebida gelada de flor de hibisco com hortelã e um toque de gengibre.</p>
+          </article>
+        </div>
+      </div>
+
+      <p class="nota">* Preços e itens ilustrativos. Consulte a disponibilidade do dia pelo WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- ENTREGA -->
+  <section id="entrega">
+    <div class="container">
+      <div class="titulo">
+        <small>Entrega</small>
+        <h2>Entregamos em todo o Bairro do Recife</h2>
+        <p>Atendemos a região do Recife Antigo com entrega ágil para que sua comida chegue quentinha.</p>
+      </div>
+      <div class="entrega-grid">
+        <div class="caixa">
+          <h3>Onde entregamos</h3>
+          <ul>
+            <li>Marco Zero e Rua do Bom Jesus</li>
+            <li>Rua da Moeda e Rua do Apolo</li>
+            <li>Cais do Apolo e Cais da Alfândega</li>
+            <li>Porto Digital e Paço Alfândega</li>
+            <li>Empresas e escritórios da região</li>
+          </ul>
+        </div>
+        <div class="caixa">
+          <h3>Como pedir</h3>
+          <ul class="passos">
+            <li>Escolha seus pratos no cardápio.</li>
+            <li>Envie o pedido pelo WhatsApp com seu endereço.</li>
+            <li>Confirme o valor e a forma de pagamento.</li>
+            <li>Receba em casa ou no trabalho, ainda quentinho.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="container">
+      <div class="titulo">
+        <small>Contato</small>
+        <h2>Fale com a gente</h2>
+      </div>
+      <div class="contato-grid">
+        <div class="cartao">
+          <h3>WhatsApp</h3>
+          <p><a href="https://wa.me/5581999999999" target="_blank" rel="noopener">(81) 99999-9999</a></p>
+        </div>
+        <div class="cartao">
+          <h3>Horário</h3>
+          <p>Ter a Dom: 11h às 22h<br>Segunda: fechado</p>
+        </div>
+        <div class="cartao">
+          <h3>Região de atendimento</h3>
+          <p>Bairro do Recife<br>Recife · Pernambuco</p>
+        </div>
+        <div class="cartao">
+          <h3>Instagram</h3>
+          <p><a href="#">@baobarecife</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span class="logo">Baobá <span style="color:var(--ocre)">Recife</span></span>
+    <p>Cozinha africana com entrega no Bairro do Recife.</p>
+    <p>&copy; 2026 Baobá Recife. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<a class="whats" href="https://wa.me/5581999999999?text=Olá!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+
+</body>
+</html>
